@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signin from "./Signin";
 import Dashboard from "./dashboard";
 import Register from "./register";
-
+import TaskBoard from "./TaskBoard";
+import ProtectedRoute from "./ProtectedRoute";
+import "./App.css";
 
 function App() {
  
@@ -13,8 +15,9 @@ function App() {
           <Nbar />
           <Routes>
             <Route path = "/" element ={<Signin />} />
-            <Route path = "/dashboard" element ={<Dashboard />} />
+            <Route path = "/dashboard" element ={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
             <Route path = "/register" element ={<Register />} />
+            <Route path = "/tasks" element ={<ProtectedRoute> <TaskBoard /> </ProtectedRoute>} />
           </Routes>
         </Router>
       
