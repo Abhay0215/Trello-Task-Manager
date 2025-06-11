@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "./auth";
+import TaskBoard from "./TaskBoard";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -11,9 +12,10 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <h2>Welcome to Dashboard</h2>
-      <button onClick={() => navigate("/tasks")}>Go to Task Board</button>
-      <button onClick={handleLogout}>Logout</button>
+      {/* <h2>Welcome to Dashboard</h2> */}
+      <TaskBoard />
+      {/* <button onClick={() => navigate("/tasks")}>Go to Task Board</button> */}
+      <button className ="logout-btn" onClick={handleLogout}>Logout</button>
     </div>
   );
 }

@@ -17,7 +17,7 @@ function App() {
             <Route path = "/" element ={<Signin />} />
             <Route path = "/dashboard" element ={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
             <Route path = "/register" element ={<Register />} />
-            <Route path = "/tasks" element ={<ProtectedRoute> <TaskBoard /> </ProtectedRoute>} />
+            {/* <Route path = "/tasks" element ={<ProtectedRoute> <TaskBoard /> </ProtectedRoute>} /> */}
           </Routes>
         </Router>
       

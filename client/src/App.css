@@ -6,15 +6,49 @@ body {
 }
 
 .auth-form,
-.dashboard,
-.taskboard {
-  width: 400px;
-  margin: 50px auto;
-  background: white;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+.taskboard-container {
+  display: flex; 
+  justify-content: space-around; 
+  flex-wrap: wrap; 
+  gap: 1rem;
+  margin: 2rem auto; 
+  max-width: 1200px; 
 }
+
+.taskboard {
+  flex: 1; 
+  min-width: 280px;
+  max-width: 350px; 
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.task-card {
+  background-color: #f9f9f9;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.task-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.task-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
 
 .auth-form input,
 .taskboard input {
@@ -25,9 +59,72 @@ body {
 }
 
 .auth-form button,
-.taskboard button,
 .dashboard button {
   padding: 8px 12px;
   margin-right: 10px;
   cursor: pointer;
+}
+
+.delete-btn {
+  /* position: absolute; */
+  top: 10px;
+  right: 10px;
+  background-color: #f9f9f9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #d2bfbf;
+}
+
+.logout-btn {
+  position:relative;
+  bottom: 10px;
+  left: 50%;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .taskboard-container {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  .taskboard {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .task-card h3 {
+    font-size: 1rem;
+  }
+
+  .task-card p {
+    font-size: 0.9rem;
+  }
+
+  .logout-btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    top: 10px;
+    right: 10px;
+  }
 }
