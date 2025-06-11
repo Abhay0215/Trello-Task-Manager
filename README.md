@@ -27,7 +27,7 @@ This project allows users to register, sign in, and manage their personal tasks 
 | Protected Routes           | ✅        |
 | Task CRUD (Create/Read/Update/Delete) | ✅ |
 | User-specific Task Access  | ✅        |
-| Task Status (ToDo/InProg/Done) | Planned   |
+| Task Status (ToDo/InProg/Done) | 🛠 In Progress   |
 | Logout + Session Handling  | ✅        |
 | UI Polishing               | 🛠 In Progress |
 | Drag-and-drop              | 🛠 Planned |
