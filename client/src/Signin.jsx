@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import "./Signin.css";
+import { useNavigate, Link } from 'react-router-dom';
+import axios from "axios";
 
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
-    // Add your authentication logic here
+    try{
+        const res = await axios.post("http://localhost:5000/api/auth/signin", { email,password});
+
+        localStorage.setItem("token", res.data.token);
+
+        navigate("/dashboard");
+    } catch (err) {
+        alert("Invalid creds");
+    }
+    
   };
 
   return (
@@ -35,9 +47,10 @@ function Signin() {
         <button type="submit">Login</button>
 
         {/* Optional future Register link */}
+        <Link to ="/register">
         <p className="register-text">
           Don't have an account? <span className="register-link">Register</span>
-        </p>
+        </p> </Link>
       </form>
     </div>
   );
