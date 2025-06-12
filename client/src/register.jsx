@@ -25,9 +25,10 @@ const navigate = useNavigate();
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+    <div style={{ padding: "20px" }} className="signin-container">
+      
+      <form  className= "signin-card" onSubmit={handleSubmit}>
+        <h2>Register</h2>
         <input
           type="text"
           placeholder="Name"

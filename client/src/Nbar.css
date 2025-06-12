@@ -23,6 +23,17 @@ html, body {
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
+  cursor: pointer;
+}
+
+.logo-link{
+  text-decoration:black;
+  color: inherit;
+}
+
+.logo-text{
+  margin: 0;
+  padding: 0;
 }
 
 .nav-list {
@@ -43,16 +54,3 @@ html, body {
   color: #d0e6ff;
 }
 
-.kuch {
-  background-color: white;
-  color: #4a90e2 !important;
-  padding: 0.4rem 0.9rem;
-  border-radius: 5px;
-  font-weight: 600;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.kuch:hover {
-  background-color: #d0e6ff;
-  color: #2c6cb7 !important;
-}

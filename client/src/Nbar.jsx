@@ -4,8 +4,11 @@ import './Nbar.css';
 
 function Nbar() {
   return (
+  
     <nav className="navbar">
-      <div className="logo">TaskManager</div>
+      <Link to={"/"} style={{textDecoration:'none', color: 'inherit'}}>
+      <div className="logo" >TaskMaster</div>
+      </Link>  
       <ul className="nav-list">
         <li>Home</li>
         <li>About</li>
