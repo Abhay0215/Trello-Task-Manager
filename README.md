@@ -124,7 +124,7 @@ Authorization: Bearer <token>
 - [ ] Task labels, due dates
 - [ ] User/team-based task sharing
 - [ ] Dark mode toggle
-- [ ] Hosted demo (Render/Vercel)
+- [x] Hosted demo (Render/Vercel)
 
 ---
 
