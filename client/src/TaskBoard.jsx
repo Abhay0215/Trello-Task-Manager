@@ -21,7 +21,7 @@ function TaskBoard() {
   const [editTitle, setEditTitle] = useState(""); 
 
   const fetchTasks = async () => {
-    const res = await axios.get("http://localhost:5000/api/tasks", {
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/tasks`, {
       headers: { Authorization: `Bearer ${getToken()}` },
     });
     const grouped = { todo: [], inprog: [], done: [] };
@@ -32,7 +32,7 @@ function TaskBoard() {
   const addTask = async () => {
     if (!newTitle.trim()) return;
     await axios.post(
-      "http://localhost:5000/api/tasks",
+      `${import.meta.env.VITE_BACKEND_URL}/api/tasks`,
       { title: newTitle },
       { headers: { Authorization: `Bearer ${getToken()}` } }
     );
@@ -41,7 +41,7 @@ function TaskBoard() {
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+    await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}`, {
       headers: { Authorization: `Bearer ${getToken()}` },
     });
     fetchTasks();
@@ -50,7 +50,7 @@ function TaskBoard() {
   const updateTask = async (id) => {
     if (!editTitle.trim()) return;
 
-    await axios.put(`http://localhost:5000/api/tasks/${id}`, { title: editTitle }, { 
+    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/${id}`, { title: editTitle }, { 
         headers:{ Authorization: `Bearer ${getToken()}`},
     });
     setEditTaskId(null);
@@ -62,7 +62,7 @@ function TaskBoard() {
     const { source, destination, draggableId } = result;
     if(!destination || source.droppableId === destination.droppableId) return;
 
-    await axios.put(`http://localhost:5000/api/tasks/${draggableId}`, 
+    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/tasks/${draggableId}`, 
       {status: destination.droppableId},
       {headers: {Authorization: `Bearer ${getToken()}`}}
     );
