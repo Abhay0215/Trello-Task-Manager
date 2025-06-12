@@ -27,7 +27,7 @@ This project allows users to register, sign in, and manage their personal tasks 
 | Protected Routes           | ✅        |
 | Task CRUD (Create/Read/Update/Delete) | ✅ |
 | User-specific Task Access  | ✅        |
-| Task Status (ToDo/InProg/Done) | Planned   |
+| Task Status (ToDo/InProg/Done) | 🛠 In Progress   |
 | Logout + Session Handling  | ✅        |
 | UI Polishing               | 🛠 In Progress |
 | Drag-and-drop              | 🛠 Planned |
@@ -131,7 +131,7 @@ Authorization: Bearer <token>
 ## 👨‍💻 Author
 
 **Abhay Rana**  
-📧 [Connect with me](mailto:abhayrana089@gmail.com)  
+📧 [Gmail](mailto:abhayrana089@gmail.com)  
 🔗 [LinkedIn](www.linkedin.com/in/abhay-rana-5a6b03268) | [GitHub](https://github.com/Abhay0215)
 
 > If you find this project useful, feel free to ⭐ the repo and follow for updates!
