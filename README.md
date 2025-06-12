@@ -27,10 +27,10 @@ This project allows users to register, sign in, and manage their personal tasks 
 | Protected Routes           | ✅        |
 | Task CRUD (Create/Read/Update/Delete) | ✅ |
 | User-specific Task Access  | ✅        |
-| Task Status (ToDo/InProg/Done) | 🛠 In Progress   |
+| Task Status (ToDo/InProg/Done) | ✅  |
 | Logout + Session Handling  | ✅        |
-| UI Polishing               | 🛠 In Progress |
-| Drag-and-drop              | 🛠 Planned |
+| UI Polishing               | ✅ |
+| Drag-and-drop              | ✅|
 | Task Collaboration         | 🛠 Planned |
 
 ---
@@ -119,8 +119,8 @@ Authorization: Bearer <token>
 
 - [x] Auth system with JWT
 - [x] Full task CRUD (by user)
-- [ ] UI polishing & mobile responsiveness
-- [ ] Drag-and-drop kanban columns
+- [x] UI polishing & mobile responsiveness
+- [x] Drag-and-drop kanban columns
 - [ ] Task labels, due dates
 - [ ] User/team-based task sharing
 - [ ] Dark mode toggle
