@@ -1,4 +1,6 @@
-# 📝 Trello Task Manager (MERN Stack)
+# 📝 Task Master (MERN Stack) (Deployed)
+
+(https://taskmasterquick.netlify.app/)
 
 A full-stack Trello-inspired task management application built using the **MERN stack (MongoDB, Express, React, Node.js)** with JWT-based authentication.
 
