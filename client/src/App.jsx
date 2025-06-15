@@ -6,6 +6,7 @@ import Register from "./register";
 import TaskBoard from "./TaskBoard";
 import ProtectedRoute from "./ProtectedRoute";
 import "./App.css";
+import About from "./About";
 
 function App() {
  
@@ -15,6 +16,7 @@ function App() {
           <Nbar />
           <Routes>
             <Route path = "/" element ={<Signin />} />
+            <Route path = "about" element ={<About />} />
             <Route path = "/dashboard" element ={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
             <Route path = "/register" element ={<Register />} />
             {/* <Route path = "/tasks" element ={<ProtectedRoute> <TaskBoard /> </ProtectedRoute>} /> */}

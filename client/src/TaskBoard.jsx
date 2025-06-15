@@ -16,6 +16,7 @@ const statusLabels = {
 function TaskBoard() {
   const [columns, setColumns] = useState({ todo: [], inprog: [], done: [] });
   const [newTitle, setNewTitle] = useState("");
+  
 
   const [editTaskId, setEditTaskId] = useState(null);   
   const [editTitle, setEditTitle] = useState(""); 
@@ -50,7 +51,7 @@ function TaskBoard() {
   const updateTask = async (id) => {
     if (!editTitle.trim()) return;
 
-    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/${id}`, { title: editTitle }, { 
+    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/tasks/${id}`, { title: editTitle }, { 
         headers:{ Authorization: `Bearer ${getToken()}`},
     });
     setEditTaskId(null);
@@ -62,7 +63,7 @@ function TaskBoard() {
     const { source, destination, draggableId } = result;
     if(!destination || source.droppableId === destination.droppableId) return;
 
-    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/tasks/${draggableId}`, 
+    await axios.put(`http://localhost:5000/api/tasks/${draggableId}`, 
       {status: destination.droppableId},
       {headers: {Authorization: `Bearer ${getToken()}`}}
     );

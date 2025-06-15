@@ -18,7 +18,10 @@ const signin = async ( req, res) => {
             { expiresIn: "2h"}
         );
 
-        res.json({token});
+        res.json({
+            token,
+        user:{ id: user._id, name:user.name, email: user.email     
+        }});
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: "Server Error"});
@@ -35,7 +38,17 @@ const register = async (req, res) => {
 
         const newUser = new User({ name, email, password});
         const savedUser = await newUser.save();
-        res.status(201).json({message: " Registered", user: savedUser })
+
+        const token = jwt.sign(
+            { userId: savedUser._id},
+            process.env.JWT_SECRET,
+            { expiresIn: "2h"}
+        );
+
+        res.status(201).json({message: " Registered",
+            user: {id: savedUser._id,
+            name: savedUser.name, email: savedUser.email
+        },token })
     } catch (err) {
         res.status(500).json({ error: err.message})
     }

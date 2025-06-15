@@ -15,6 +15,7 @@ function Signin() {
         const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signin`, { email,password});
 
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
 
         navigate("/dashboard");
     } catch (err) {

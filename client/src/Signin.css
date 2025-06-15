@@ -1,9 +1,10 @@
 .signin-container {
-  height: calc(100vh - 60px); /* Adjust for navbar height */
+  height: calc(100vh - 60px);
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f4f8fc;
+ 
 }
 
 .signin-card {

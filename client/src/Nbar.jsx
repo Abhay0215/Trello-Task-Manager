@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import './Nbar.css';
 
 function Nbar() {
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
   
     <nav className="navbar">
@@ -10,10 +13,19 @@ function Nbar() {
       <div className="logo" >TaskMaster</div>
       </Link>  
       <ul className="nav-list">
-        <li>Home</li>
-        <li>About</li>
+        <li><Link to = {"/"}>Home</Link></li>
+        <li><Link to = {"about"}>About</Link></li>
         <li>Contact</li>
-        <li>Kuch To</li>
+        
+        {user ? (
+          <li className='profile'>
+            
+            <Link to = {"about"}>{user.name} </Link>
+          </li>
+        ) : (
+          <li>Login</li>
+        )}
+
       </ul>
     </nav>
   );
