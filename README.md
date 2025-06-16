@@ -33,6 +33,7 @@ This project allows users to register, sign in, and manage their personal tasks 
 | Logout + Session Handling  | ✅        |
 | UI Polishing               | ✅ |
 | Drag-and-drop              | ✅|
+| Live chat             | ✅|
 | Task Collaboration         | 🛠 Planned |
 
 ---
