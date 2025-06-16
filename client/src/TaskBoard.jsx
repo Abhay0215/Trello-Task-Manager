@@ -6,14 +6,33 @@ import {
   Droppable,
   Draggable
 } from "@hello-pangea/dnd";
+import { io } from "socket.io-client";
 
-const statusLabels = {
-  todo: "To Do",
-  inprog: "In Progress",
-  done: "Done"
-};
+
 
 function TaskBoard() {
+
+  const [msg, setMsg] = useState('');
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    const socket = io("http://localhost:5000");
+
+    socket.on("new-message", (msg) => {
+      setMessages((prev) => [...prev,msg]);
+    });
+    return() => {
+      socket.disconnect();
+    };
+  }, []);
+
+  const sendMessage = () => {
+    const socket = io("http://localhost:5000");
+
+    socket.emit("send-message", msg);
+    setMsg('');
+  }
+
   const [columns, setColumns] = useState({ todo: [], inprog: [], done: [] });
   const [newTitle, setNewTitle] = useState("");
   
@@ -28,6 +47,12 @@ function TaskBoard() {
     const grouped = { todo: [], inprog: [], done: [] };
     res.data.forEach((task) => grouped[task.status].push(task));
     setColumns(grouped);
+  };
+
+  const statusLabels = {
+  todo: "To Do",
+  inprog: "In Progress",
+  done: "Done"
   };
 
   const addTask = async () => {
@@ -76,6 +101,7 @@ function TaskBoard() {
   }, []);
 
   return (
+    <>
    <DragDropContext onDragEnd={handleDragEnd}>
     <div className="taskboard-container">
       {Object.entries(columns).map(([status, tasks]) => (
@@ -169,8 +195,28 @@ function TaskBoard() {
           )}
         </Droppable>
       ))}
+      
     </div>
-  </DragDropContext>   
+    </DragDropContext> 
+    <div className="Live-chat">
+      <h2>Chat</h2>
+      <ul>
+        {messages.map((msg, idx) => (
+          <li key={idx}>{msg}</li>
+        ))}
+      </ul>
+
+      <input
+        value={msg}
+        onChange={(e) => setMsg(e.target.value)}
+      />
+      <button onClick={sendMessage}>
+        Send
+      </button>
+    </div>
+   
+  </>
+  
   );
 }
 
