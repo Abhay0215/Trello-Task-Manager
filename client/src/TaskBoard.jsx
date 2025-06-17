@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { getToken } from "./auth";
 import {
@@ -11,26 +11,62 @@ import { io } from "socket.io-client";
 
 
 function TaskBoard() {
+ 
 
   const [msg, setMsg] = useState('');
   const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    const socket = io("http://localhost:5000");
+   const socket = useRef(null);
 
-    socket.on("new-message", (msg) => {
+  const token = getToken();
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const userId = user?.id;
+  const userName = user?.name;
+
+  useEffect(() => {
+      // (async () => {
+      //   try{
+      //     const res = await axios.get("http://localhost:5000/api/messages", {
+      //       headers: { Authorization: `Bearer ${token}`},
+      //     });
+      //     setMessages(res.data);
+      //   } catch (err) {
+      //     console.error(err);
+      //   }
+      // })();
+    socket.current = io("http://localhost:5000");
+
+    socket.current.on("new-message", (msg) => {
       setMessages((prev) => [...prev,msg]);
     });
     return() => {
-      socket.disconnect();
+      socket.current.disconnect();
     };
   }, []);
 
-  const sendMessage = () => {
-    const socket = io("http://localhost:5000");
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/messages", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setMessages(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [token]);
 
-    socket.emit("send-message", msg);
-    setMsg('');
+  const handleSend = () => {
+    if(msg.trim()) {
+    
+      socket.current.emit("send-message", {
+        text: msg,
+        senderId: userId,
+        senderName: userName
+      });
+      setMsg('');
+    }
   }
 
   const [columns, setColumns] = useState({ todo: [], inprog: [], done: [] });
@@ -202,7 +238,10 @@ function TaskBoard() {
       <h2>Chat</h2>
       <ul>
         {messages.map((msg, idx) => (
-          <li key={idx}>{msg}</li>
+          <li key={msg._id}>
+             <strong>{msg.senderName}:</strong> {msg.text}
+             <span>({new Date(msg.timestamp).toLocaleString()})</span>
+            </li>
         ))}
       </ul>
 
@@ -210,7 +249,7 @@ function TaskBoard() {
         value={msg}
         onChange={(e) => setMsg(e.target.value)}
       />
-      <button onClick={sendMessage}>
+      <button onClick={handleSend}>
         Send
       </button>
     </div>
