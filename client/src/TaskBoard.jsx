@@ -34,7 +34,7 @@ function TaskBoard() {
       //     console.error(err);
       //   }
       // })();
-    socket.current = io("http://localhost:5000");
+    socket.current = io(`${import.meta.env.VITE_BACKEND_URL}`);
 
     socket.current.on("new-message", (msg) => {
       setMessages((prev) => [...prev,msg]);
@@ -47,7 +47,7 @@ function TaskBoard() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/messages", {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/messages`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMessages(res.data);
@@ -124,7 +124,7 @@ function TaskBoard() {
     const { source, destination, draggableId } = result;
     if(!destination || source.droppableId === destination.droppableId) return;
 
-    await axios.put(`http://localhost:5000/api/tasks/${draggableId}`, 
+    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/tasks/${draggableId}`, 
       {status: destination.droppableId},
       {headers: {Authorization: `Bearer ${getToken()}`}}
     );
