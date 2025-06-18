@@ -144,6 +144,35 @@ body {
   background-color: #0056b3;
 }
 
+.about-container {
+  max-width: 800px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.about-container h1 {
+  color: #4a90e2;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-container p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-container strong {
+  color: #2a7be4;
+}
+
+
 @media (max-width: 600px) {
   .taskboard-container {
     flex-direction: column;
