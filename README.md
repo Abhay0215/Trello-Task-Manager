@@ -1,142 +1,159 @@
-# 📝 Task Master (MERN Stack) (Deployed)
+# 📝 Task Master — A Full Stack Kanban Task Manager 🚀
 
-(https://taskmasterquick.netlify.app/)
+🔗 **Live Demo:** [https://taskmasterquick.netlify.app](https://taskmasterquick.netlify.app)
 
-A full-stack Trello-inspired task management application built using the **MERN stack (MongoDB, Express, React, Node.js)** with JWT-based authentication.
-
-This project allows users to register, sign in, and manage their personal tasks in a kanban-style interface. The backend supports CRUD operations for tasks and protects routes using token authentication.
-
-> ⚠️ This project is a work-in-progress. I'm actively working on improving the UI, adding drag-and-drop support, filtering, user collaboration features, and more!
+Task Master is a full-stack **Trello-inspired task management app** built using the **MERN stack (MongoDB, Express.js, React.js, Node.js)**. Users can register, sign in, manage personal tasks on a drag-and-drop Kanban board, and enjoy **real-time chat**, **protected dashboards**, and **individualized data access**.
 
 ---
 
 ## 🔧 Tech Stack
 
-- **Frontend:** React.js, React Router DOM
+- **Frontend:** React.js, React Router, Axios, CSS
 - **Backend:** Node.js, Express.js
-- **Database:** MongoDB (Mongoose ODM)
-- **Authentication:** JSON Web Tokens (JWT)
-- **Styling:** CSS (planning Tailwind integration)
+- **Database:** MongoDB (with Mongoose ODM)
+- **Authentication:** JWT (JSON Web Tokens), Bcrypt.js
+- **Real-time:** Socket.IO
+- **Deployment:** Netlify (frontend), Render (backend), MongoDB Atlas (database)
 
 ---
 
-## 📦 Features
+## 📦 Key Features
 
-| Feature                     | Status ✅ |
-|----------------------------|-----------|
-| Register & Sign In         | ✅        |
-| JWT Token Auth             | ✅        |
-| Protected Routes           | ✅        |
-| Task CRUD (Create/Read/Update/Delete) | ✅ |
-| User-specific Task Access  | ✅        |
-| Task Status (ToDo/InProg/Done) | ✅  |
-| Logout + Session Handling  | ✅        |
-| UI Polishing               | ✅ |
-| Drag-and-drop              | ✅|
-| Live chat             | ✅|
-| Task Collaboration         | 🛠 Planned |
+| Feature                           | Status |
+| -------------------------------- | ------ |
+| User Registration/Login          | ✅     |
+| JWT Token Authentication         | ✅     |
+| Protected Routes (Frontend + API)| ✅     |
+| Task CRUD Operations             | ✅     |
+| User-specific Data Isolation     | ✅     |
+| Drag-and-Drop Task Board         | ✅     |
+| Live Chat                        | ✅     |
+| Profile Section                  | ✅     |
+| Logout & Token Expiry Handling   | ✅     |
+| Deployment (Netlify + Render)    | ✅     |
 
 ---
 
-## 📁 Folder Structure (Simplified)
+## 🧱 Folder Structure
 
 ```
-root/
-├── client/               # React Frontend
+Trello-Task-Manager/
+├── client/              # Frontend (React)
 │   ├── App.jsx
-│   ├── auth.jsx
 │   ├── Signin.jsx
-│   ├── register.jsx
-│   ├── dashboard.jsx
+│   ├── Register.jsx
+│   ├── Dashboard.jsx
 │   ├── TaskBoard.jsx
-│   └── ProtectedRoute.jsx
-├── server/               # Express Backend
+│   ├── Chat.jsx
+│   ├── auth.jsx
+│   ├── Nbar.jsx
+│   └── styles/
+│       └── Signin.css
+├── server/              # Backend (Express)
 │   ├── index.js
 │   ├── models/
+│   │   └── User.js, Task.js, message.js
 │   ├── routes/
-│   ├── controllers/
+│   │   └── auth.js, task.js, Message.js
 │   ├── middleware/
-│   └── config/db.js
+│   │   └── authMiddleware.js
+│   ├── config/
+│   │   └── db.js
+│   └── controllers/
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Getting Started Locally
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/<your-username>/Trello-Task-Manager.git
-cd Trello-Task-Manager
-```
+### 🔌 Backend Setup
 
-### 2. Setup Backend
 ```bash
 cd server
 npm install
 ```
 
-> Create a `.env` file inside the `server/` directory:
+Create a `.env` file in `server/`:
+
 ```
-MONGO_URI=mongodb://127.0.0.1:27017/trello-clone
-JWT_SECRET=supersecretkey123
+MONGO_URI=mongodb+srv://your-mongo-url
+JWT_SECRET=your-secret-key
 ```
 
 ```bash
 npm run dev
 ```
-The backend should now be running on `http://localhost:5000`
 
-### 3. Setup Frontend
+### 💻 Frontend Setup
+
 ```bash
 cd ../client
 npm install
-npm start
+npm run dev
 ```
-Frontend should be live at `http://localhost:3000`
 
 ---
 
-## ✅ API Endpoints
+## 🌐 API Endpoints
 
-### 🔐 Auth Routes
+### Auth
+
+```http
+POST /api/auth/register
+POST /api/auth/signin
 ```
-POST   /api/auth/register
-POST   /api/auth/signin
-```
-### 📋 Task Routes (Protected)
-```
+
+### Tasks (Requires Bearer Token)
+
+```http
 GET    /api/tasks
 POST   /api/tasks
 PUT    /api/tasks/:id
 DELETE /api/tasks/:id
 ```
-All task routes require this header:
-```
-Authorization: Bearer <token>
-```
 
 ---
 
-## 💡 Roadmap
+## 🚀 Deployment
 
-- [x] Auth system with JWT
-- [x] Full task CRUD (by user)
-- [x] UI polishing & mobile responsiveness
-- [x] Drag-and-drop kanban columns
-- [ ] Task labels, due dates
-- [ ] User/team-based task sharing
+- **Frontend** deployed to **Netlify**
+- **Backend** deployed to **Render**
+- **MongoDB** hosted on **MongoDB Atlas**
+
+✅ Integrated Axios for seamless frontend-backend communication with <200ms average response time.  
+✅ Environment variables handled securely using `.env` files.
+
+---
+
+## 📸 Screenshots
+
+| Kanban Dashboard | Live Chat | Auth System |
+|------------------|-----------|-------------|
+| ![Board](./screenshots/board.png) | ![Chat](./screenshots/chat.png) | ![Login](./screenshots/login.png) |
+
+> _Note: Replace with your actual screenshot paths or hosted image links if needed._
+
+---
+
+## 📍 Future Enhancements
+
+- [ ] Task collaboration with multiple users
+- [ ] Notifications (push/toast)
+- [ ] Task due dates & priority tags
 - [ ] Dark mode toggle
-- [x] Hosted demo (Render/Vercel)
+- [ ] Editable profile and image upload
 
 ---
 
 ## 👨‍💻 Author
 
 **Abhay Rana**  
-📧 [Gmail](mailto:abhayrana089@gmail.com)  
-🔗 [LinkedIn](www.linkedin.com/in/abhay-rana-5a6b03268) | [GitHub](https://github.com/Abhay0215)
-
-> If you find this project useful, feel free to ⭐ the repo and follow for updates!
+📧 [abhayrana089@gmail.com](mailto:abhayrana089@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/abhay-rana-5a6b03268) | [GitHub](https://github.com/Abhay0215)
 
 ---
+
+⭐ If you liked this project, give it a star and follow for more!  
+💬 Feel free to contribute or open issues for feedback or collaboration.
+
