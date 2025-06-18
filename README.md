@@ -52,9 +52,9 @@ Trello-Task-Manager/
 ├── server/              # Backend (Express)
 │   ├── index.js
 │   ├── models/
-│   │   └── User.js, Task.js
+│   │   └── User.js, Task.js, message.js
 │   ├── routes/
-│   │   └── auth.js, task.js
+│   │   └── auth.js, task.js, Message.js
 │   ├── middleware/
 │   │   └── authMiddleware.js
 │   ├── config/
